@@ -21,21 +21,27 @@ public class Game {
 	@Column(name = "game_year")
 	private Integer year;
 	private String genre;
-	private String plaforms;
+	private String platforms;
+	private Double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")											// CONFIGURA CAMPO VARCHAR NO BANCO MAIOR QUE 250 CARACTERES, POR PADRÃO VEM 250
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	public Game() {
 	}
 
-	public Game(Long id, String title, Integer year, String genre, String plaforms, String imgUrl,
+	public Game(Long id, String title, Integer year, String genre, String plaforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.plaforms = plaforms;
+		this.platforms = plaforms;
+		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
@@ -74,11 +80,19 @@ public class Game {
 	}
 
 	public String getPlaforms() {
-		return plaforms;
+		return platforms;
 	}
 
 	public void setPlaforms(String plaforms) {
-		this.plaforms = plaforms;
+		this.platforms = plaforms;
+	}
+	
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
 	}
 
 	public String getImgUrl() {
@@ -121,5 +135,7 @@ public class Game {
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
+
+	
 	
 }
